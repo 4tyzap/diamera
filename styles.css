@@ -37,6 +37,11 @@ body {
     flex: 1;
     text-align: center;
     border: 2px solid transparent;
+    /* Добавить для вертикального выравнивания: */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px; /* Фиксированная высота пункта */
 }
 
 .section {
