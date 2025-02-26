@@ -96,3 +96,20 @@ window.addEventListener('DOMContentLoaded', () => {
     const activeItem = document.querySelector('.nav-item.active');
     updateMenuIndicator(activeItem);
 });
+
+function updateMenuSizes() {
+    const menuItems = document.querySelectorAll('.nav-item, .logo-container');
+    const indicator = document.querySelector('.nav-indicator');
+    const itemWidth = window.innerWidth / 5;
+    
+    menuItems.forEach(item => {
+        item.style.width = `${itemWidth}px`;
+        item.style.height = `${itemWidth * 0.666}px`;
+    });
+    
+    indicator.style.width = `${itemWidth}px`;
+    indicator.style.height = `${itemWidth * 0.666}px`;
+}
+
+window.addEventListener('resize', updateMenuSizes);
+window.addEventListener('DOMContentLoaded', updateMenuSizes);
