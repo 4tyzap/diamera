@@ -149,3 +149,7 @@ body {
     background: transparent !important;
     pointer-events: none;
 }
+
+html {
+    scroll-behavior: auto !important; /* Отключаем нативный smooth-scroll */
+}
