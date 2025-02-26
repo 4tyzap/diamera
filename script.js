@@ -2,18 +2,24 @@ window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('.section');
     const navItems = document.querySelectorAll('.nav-item');
     const parallaxBg = document.querySelector('.parallax-bg');
-    
-    // Индикатор активного раздела
-    sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= 100 && rect.bottom >= 100) {
-            navItems.forEach(item => item.classList.remove('active'));
-            navItems[index].classList.add('active');
-            
-            // Смена фона
-            document.body.style.background = section.dataset.bg === 'dark' 
-                ? 'var(--pastel-purple)' 
-                : 'var(--light-gray)';
+    const menuHeight = document.querySelector('.navbar').offsetHeight;
+    const scrollOffset = 100; // Отступ для активации раздела
+
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - menuHeight;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        const currentScroll = window.pageYOffset + scrollOffset;
+
+        if (currentScroll >= sectionTop && currentScroll < sectionBottom) {
+            const targetItem = document.querySelector(`[data-section="${section.id}"]`);
+            if (targetItem && !targetItem.classList.contains('active')) {
+                // Снимаем активность со всех пунктов
+                navItems.forEach(item => item.classList.remove('active'));
+                // Добавляем активность текущему
+                targetItem.classList.add('active');
+                // Обновляем индикатор
+                updateMenuIndicator(targetItem);
+            }
         }
     });
 
