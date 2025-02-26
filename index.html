@@ -8,16 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-items">
-            <div class="nav-item active">Главная</div>
-            <div class="nav-item">Компания</div>
-            <div class="nav-item">Услуги</div>
-            <div class="nav-item">Контакты</div>
-        </div>
-        <div class="menu-icon">☰</div>
-    </nav>
-
+<nav class="navbar">
+    <div class="nav-items">
+        <div class="nav-item active" data-section="home">Главная</div>
+        <div class="nav-item" data-section="company">Компания</div>
+        <div class="nav-item" data-section="services">Услуги</div>
+        <div class="nav-item" data-section="contacts">Контакты</div>
+        <div class="nav-indicator"></div>
+    </div>
+    <div class="menu-icon">☰</div>
+</nav>
+    
     <section id="home" class="section" data-bg="light">
         <div class="parallax-bg"></div>
         <div class="content-block">
