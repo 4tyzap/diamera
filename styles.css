@@ -39,21 +39,6 @@ body {
     border: 2px solid transparent;
 }
 
-.nav-item::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--dark-purple);
-    transition: width 0.3s;
-}
-
-.nav-item.active::after {
-    width: 100%;
-}
-
 .section {
     min-height: 100vh;
     padding: 120px 40px 40px;
@@ -156,10 +141,11 @@ body {
 .nav-indicator {
     position: absolute;
     height: calc(100% - 8px);
-    background: rgba(26, 10, 74, 0.1);
     border: 2px solid var(--dark-purple);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     top: 4px;
     z-index: 0;
     border-radius: 6px;
+    background: transparent !important;
+    pointer-events: none;
 }
