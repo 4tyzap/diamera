@@ -152,3 +152,14 @@ body {
         z-index: 1001;
     }
 }
+
+.nav-indicator {
+    position: absolute;
+    height: calc(100% - 8px);
+    background: rgba(26, 10, 74, 0.1);
+    border: 2px solid var(--dark-purple);
+    transition: all 0.3s ease;
+    top: 4px;
+    z-index: 0;
+    border-radius: 6px;
+}
