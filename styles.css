@@ -29,9 +29,14 @@ body {
 
 .nav-item {
     cursor: pointer;
+    padding: 15px 30px;
     color: var(--dark-purple);
+    transition: 0.3s;
     position: relative;
-    padding: 5px 0;
+    z-index: 1;
+    flex: 1;
+    text-align: center;
+    border: 2px solid transparent;
 }
 
 .nav-item::after {
