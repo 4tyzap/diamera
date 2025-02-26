@@ -207,3 +207,13 @@ html {
     border: 2px solid var(--dark-purple);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+:root {
+    --menu-item-width: calc(100vw / 5);
+    --menu-height: calc(var(--menu-item-width) * 0.5); /* 10vw при 100vw */
+    --section-offset: calc(var(--menu-height) + 2vw); /* Зависит от высоты меню и ширины окна */
+}
+
+#home {
+    padding-top: var(--section-offset); /* Было 120px */
+}
