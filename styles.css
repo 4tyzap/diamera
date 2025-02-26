@@ -46,9 +46,13 @@ body {
 
 .section {
     min-height: 100vh;
-    padding: 120px 40px 40px;
+    padding: calc(var(--section-offset)) 40px 40px; /* Для первой секции */
     position: relative;
     overflow: hidden;
+}
+
+.section:not(#home) {
+    padding-top: calc(max(var(--section-offset) - var(--menu-height), 20px)); /* Для остальных */
 }
 
 .parallax-bg {
@@ -214,6 +218,7 @@ html {
     --section-offset: calc(var(--menu-height) + 2vw); /* Зависит от высоты меню и ширины окна */
 }
 
-#home {
+/* #home {
     padding-top: var(--section-offset); /* Было 120px */
 }
+*/
