@@ -40,7 +40,7 @@ function updateMenuIndicator(activeItem) {
 }
 
 // Константы для настройки анимации
-const SCROLL_SPEED = 1200; // пикселей/секунду
+const SCROLL_SPEED = 1600; // пикселей/секунду
 let isScrolling = false;
 let lastScrollTime = 0;
 
@@ -106,13 +106,13 @@ function updateMenuSizes() {
     // Обновляем только пункты меню
     menuItems.forEach(item => {
         item.style.width = `${itemWidth}px`;
-        item.style.height = `${itemWidth * 0.666}px`;
+        item.style.height = `${itemWidth * 0.5}px`;
     });
 
     // Логотип сохраняет пропорции через CSS
     logoContainer.style.width = `${itemWidth}px`;
     indicator.style.width = `${itemWidth}px`;
-    indicator.style.height = `${itemWidth * 0.666}px`;
+    indicator.style.height = `${itemWidth * 0.5}px`;
 }
 
 window.addEventListener('resize', updateMenuSizes);
