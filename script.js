@@ -24,17 +24,36 @@ window.addEventListener('scroll', () => {
 });
 
 // Плавный скролл
+function updateMenuIndicator(activeItem) {
+    const indicator = document.querySelector('.nav-indicator');
+    const itemRect = activeItem.getBoundingClientRect();
+    const containerRect = document.querySelector('.nav-items').getBoundingClientRect();
+    
+    indicator.style.width = `${itemRect.width}px`;
+    indicator.style.left = `${itemRect.left - containerRect.left}px`;
+}
+
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = item.textContent.toLowerCase();
-        document.getElementById(targetId).scrollIntoView({
-            behavior: 'smooth'
+        const targetSection = item.dataset.section;
+        document.getElementById(targetSection).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
         });
+        
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        updateMenuIndicator(item);
     });
 });
 
 // Мобильное меню (добавьте логику открытия/закрытия)
 document.querySelector('.menu-icon').addEventListener('click', () => {
     document.querySelector('.nav-items').classList.toggle('active');
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const activeItem = document.querySelector('.nav-item.active');
+    updateMenuIndicator(activeItem);
 });
