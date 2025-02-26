@@ -93,8 +93,10 @@ document.querySelector('.menu-icon').addEventListener('click', () => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-    const activeItem = document.querySelector('.nav-item.active');
-    updateMenuIndicator(activeItem);
+    const firstMenuItem = document.querySelector('.nav-item[data-section="home"]');
+    firstMenuItem.classList.add('active');
+    updateMenuIndicator(firstMenuItem);
+    updateMenuSizes();
 });
 
 function updateMenuSizes() {
