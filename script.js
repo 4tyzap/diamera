@@ -97,7 +97,7 @@ window.addEventListener('DOMContentLoaded', () => {
     updateMenuIndicator(activeItem);
 });
 
-function updateMenuSizes() {
+/* function updateMenuSizes() {
     const menuItems = document.querySelectorAll('.nav-item');
     const logoContainer = document.querySelector('.logo-container');
     const indicator = document.querySelector('.nav-indicator');
@@ -113,6 +113,31 @@ function updateMenuSizes() {
     logoContainer.style.width = `${itemWidth}px`;
     indicator.style.width = `${itemWidth}px`;
     indicator.style.height = `${itemWidth * 0.5}px`;
+} */
+
+function updateMenuSizes() {
+    const menuItems = document.querySelectorAll('.nav-item');
+    const logoContainer = document.querySelector('.logo-container');
+    const indicator = document.querySelector('.nav-indicator');
+    const navbar = document.querySelector('.navbar');
+    
+    // Рассчитываем размеры
+    const itemWidth = window.innerWidth / 5;
+    const menuHeight = itemWidth * 0.5;
+    const fontSize = Math.floor(menuHeight * 0.2); // 20% от высоты с округлением вниз
+
+    // Применяем размер шрифта
+    menuItems.forEach(item => {
+        item.style.fontSize = `${fontSize}px`;
+        item.style.width = `${itemWidth}px`;
+        item.style.height = `${menuHeight}px`;
+    });
+
+    // Обновляем остальные элементы
+    navbar.style.height = `${menuHeight}px`;
+    logoContainer.style.width = `${itemWidth}px`;
+    indicator.style.width = `${itemWidth}px`;
+    indicator.style.height = `${menuHeight}px`;
 }
 
 window.addEventListener('resize', updateMenuSizes);
