@@ -158,3 +158,42 @@ body {
 html {
     scroll-behavior: auto !important; /* Отключаем нативный smooth-scroll */
 }
+
+:root {
+    --menu-item-width: calc(100vw / 5);
+    --menu-height: calc(var(--menu-item-width) * 0.666);
+}
+
+.navbar {
+    height: var(--menu-height);
+}
+
+.nav-items {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-container {
+    width: var(--menu-item-width);
+    height: 100%;
+    background: #fff; /* Временный фон для лого */
+}
+
+.nav-item {
+    width: var(--menu-item-width);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-indicator {
+    width: var(--menu-item-width);
+    height: calc(var(--menu-item-width) * 0.666);
+    position: absolute;
+    border: 2px solid var(--dark-purple);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
