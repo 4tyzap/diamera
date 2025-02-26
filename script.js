@@ -97,24 +97,6 @@ window.addEventListener('DOMContentLoaded', () => {
     updateMenuIndicator(activeItem);
 });
 
-/* function updateMenuSizes() {
-    const menuItems = document.querySelectorAll('.nav-item');
-    const logoContainer = document.querySelector('.logo-container');
-    const indicator = document.querySelector('.nav-indicator');
-    const itemWidth = window.innerWidth / 5;
-
-    // Обновляем только пункты меню
-    menuItems.forEach(item => {
-        item.style.width = `${itemWidth}px`;
-        item.style.height = `${itemWidth * 0.5}px`;
-    });
-
-    // Логотип сохраняет пропорции через CSS
-    logoContainer.style.width = `${itemWidth}px`;
-    indicator.style.width = `${itemWidth}px`;
-    indicator.style.height = `${itemWidth * 0.5}px`;
-} */
-
 function updateMenuSizes() {
     const menuItems = document.querySelectorAll('.nav-item');
     const logoContainer = document.querySelector('.logo-container');
@@ -124,7 +106,7 @@ function updateMenuSizes() {
     // Рассчитываем размеры
     const itemWidth = window.innerWidth / 5;
     const menuHeight = itemWidth * 0.5;
-    const fontSize = Math.floor(menuHeight * 0.2); // 20% от высоты с округлением вниз
+    const fontSize = Math.floor(menuHeight * 0.15); // 15% от высоты с округлением вниз
 
     // Применяем размер шрифта
     menuItems.forEach(item => {
