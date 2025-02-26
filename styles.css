@@ -177,7 +177,17 @@ html {
 .logo-container {
     width: var(--menu-item-width);
     height: 100%;
-    background: #fff; /* Временный фон для лого */
+    /* Удалить background: #fff; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.logo-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
 }
 
 .nav-item {
