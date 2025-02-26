@@ -39,21 +39,54 @@ function updateMenuIndicator(activeItem) {
     indicator.style.left = `${itemRect.left - containerRect.left}px`;
 }
 
+// Константы для настройки анимации
+const SCROLL_SPEED = 1200; // пикселей/секунду
+let isScrolling = false;
+let lastScrollTime = 0;
+
+function smoothScrollTo(targetY) {
+    if (isScrolling) return;
+    
+    const startY = window.pageYOffset;
+    const distance = targetY - startY;
+    const duration = Math.abs(distance) / SCROLL_SPEED * 1000;
+    let startTime = null;
+
+    isScrolling = true;
+
+    function animate(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        
+        window.scrollTo(0, startY + distance * progress);
+        
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animate);
+        } else {
+            isScrolling = false;
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetSection = item.dataset.section;
-        document.getElementById(targetSection).scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        if (isScrolling && Date.now() - lastScrollTime < 100) return;
         
+        const targetSection = document.getElementById(item.dataset.section);
+        const targetY = targetSection.offsetTop - document.querySelector('.navbar').offsetHeight;
+        
+        smoothScrollTo(targetY);
+        lastScrollTime = Date.now();
+
         document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
         item.classList.add('active');
         updateMenuIndicator(item);
     });
 });
-
 // Мобильное меню (добавьте логику открытия/закрытия)
 document.querySelector('.menu-icon').addEventListener('click', () => {
     document.querySelector('.nav-items').classList.toggle('active');
