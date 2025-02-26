@@ -161,7 +161,7 @@ html {
 
 :root {
     --menu-item-width: calc(100vw / 5);
-    --menu-height: calc(var(--menu-item-width) * 0.666);
+    --menu-height: calc(var(--menu-item-width) * 0.5);
 }
 
 .navbar {
@@ -181,7 +181,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 0;
 }
 
 .logo-img {
