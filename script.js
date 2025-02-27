@@ -72,7 +72,7 @@ function smoothScrollTo(targetY) {
 } */
 
 const SCROLL_ACCELERATION_ZONE = 1.0 * window.innerHeight; // 25% высоты экрана
-const MAX_SCROLL_SPEED = 5400; // пикселей/сек (увеличено для быстрой середины)
+const MAX_SCROLL_SPEED = 200; // пикселей/сек (увеличено для быстрой середины)
 
 function smoothScrollTo(targetY) {
     if (isScrolling) return;
