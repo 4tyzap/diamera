@@ -129,7 +129,37 @@ function smoothScrollTo(targetY) {
         const deltaTime = (now - lastFrameTime) / 1000;
         lastFrameTime = now;
 
-        // ... предыдущий код анимации ...
+        const remainingDistance = targetY - currentPosition;
+        const absoluteRemaining = Math.abs(remainingDistance);
+
+        // Фаза ускорения/замедления
+        if (absoluteRemaining <= SCROLL_ACCELERATION_ZONE * 2) {
+            const acceleration = (MAX_SCROLL_SPEED ** 2) / (2 * SCROLL_ACCELERATION_ZONE);
+            currentSpeed = Math.min(
+                Math.sqrt(2 * acceleration * absoluteRemaining),
+                MAX_SCROLL_SPEED
+            );
+        } 
+        // Фаза постоянной скорости
+        else {
+            currentSpeed = MAX_SCROLL_SPEED;
+        }
+
+        const frameDelta = currentSpeed * deltaTime * direction;
+        
+        // Финализация при приближении
+        if (Math.abs(frameDelta) >= absoluteRemaining) {
+            window.scrollTo(0, targetY);
+            isScrolling = false;
+            return;
+        }
+
+        currentPosition += frameDelta;
+        window.scrollTo(0, currentPosition);
+        
+        if (isScrolling) {
+            requestAnimationFrame(animate);
+        }
 
         // Обновление индикатора в реальном времени
         const activeSection = getActiveSection(currentPosition);
