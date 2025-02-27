@@ -42,7 +42,7 @@ function updateMenuIndicator(activeItem) {
 let isScrolling = false;
 let lastScrollTime = 0;
 
-const SCROLL_ACCELERATION_ZONE = 1.0 * window.innerHeight;
+/*const SCROLL_ACCELERATION_ZONE = 1.0 * window.innerHeight;
 const MAX_SCROLL_SPEED = 500;
 const EASING_FACTOR = 2; // Коэффициент нелинейности (2 для квадратичной)
 
@@ -104,10 +104,10 @@ function smoothScrollTo(targetY) {
     }
 
     requestAnimationFrame(animate);
-}
+}*/
 
-/* const SCROLL_ACCELERATION_ZONE = 1.0 * window.innerHeight; // 25% высоты экрана
-const MAX_SCROLL_SPEED = 200; // пикселей/сек (увеличено для быстрой середины)
+const SCROLL_ACCELERATION_ZONE = 2.0 * window.innerHeight; // 25% высоты экрана
+const MAX_SCROLL_SPEED = 6000; // пикселей/сек (увеличено для быстрой середины)
 
  function smoothScrollTo(targetY) {
     if (isScrolling) return;
@@ -162,7 +162,7 @@ const MAX_SCROLL_SPEED = 200; // пикселей/сек (увеличено д�
 
     requestAnimationFrame(animate);
 }
-*/
+
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', (e) => {
         e.preventDefault();
