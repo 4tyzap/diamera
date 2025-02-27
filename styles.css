@@ -152,7 +152,7 @@ body {
     height: calc(100% - 8px);
     border: 2px solid var(--dark-purple);
 /*    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
-    transition: transform 0.1s linear; /* Уменьшили время перехода */
+    transition: transform 0.05s linear; /* Уменьшили время перехода */
     will-change: transform; /* Оптимизация для браузера */    
     top: 0/*4px*/;
     z-index: 0;
