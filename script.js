@@ -40,10 +40,10 @@ function updateMenuIndicator(activeItem) {
 }
 
 // Константы для настройки анимации
-/* const SCROLL_SPEED = 1600; // пикселей/секунду
+const SCROLL_SPEED = 1600; // пикселей/секунду
 let isScrolling = false;
 let lastScrollTime = 0;
-
+/* 
 function smoothScrollTo(targetY) {
     if (isScrolling) return;
     
