@@ -39,42 +39,77 @@ function updateMenuIndicator(activeItem) {
     indicator.style.left = `${itemRect.left - containerRect.left}px`;
 }
 
-// Константы для настройки анимации
-// const SCROLL_SPEED = 1600; // пикселей/секунду
 let isScrolling = false;
 let lastScrollTime = 0;
-/* 
+
+const SCROLL_ACCELERATION_ZONE = 1.0 * window.innerHeight;
+const MAX_SCROLL_SPEED = 500;
+const EASING_FACTOR = 2; // Коэффициент нелинейности (2 для квадратичной)
+
 function smoothScrollTo(targetY) {
     if (isScrolling) return;
     
     const startY = window.pageYOffset;
-    const distance = targetY - startY;
-    const duration = Math.abs(distance) / SCROLL_SPEED * 1000;
-    let startTime = null;
-
+    const totalDistance = targetY - startY;
+    const direction = Math.sign(totalDistance);
+    const absoluteDistance = Math.abs(totalDistance);
+    
+    let currentPosition = startY;
+    let lastFrameTime = performance.now();
     isScrolling = true;
 
-    function animate(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1);
+    function calculateSpeed(remaining) {
+        const progress = 1 - (Math.abs(remaining) / SCROLL_ACCELERATION_ZONE);
         
-        window.scrollTo(0, startY + distance * progress);
+        // Квадратичное ускорение/замедление
+        return MAX_SCROLL_SPEED * Math.pow(progress, EASING_FACTOR);
+    }
+
+    function animate() {
+        const now = performance.now();
+        const deltaTime = (now - lastFrameTime) / 1000;
+        lastFrameTime = now;
+
+        const remainingDistance = targetY - currentPosition;
+        const absoluteRemaining = Math.abs(remainingDistance);
+
+        let currentSpeed;
         
-        if (timeElapsed < duration) {
-            requestAnimationFrame(animate);
-        } else {
-            isScrolling = false;
+        // 1. Фаза ускорения (первые 25% экрана)
+        if (currentPosition - startY < SCROLL_ACCELERATION_ZONE && direction > 0) {
+            currentSpeed = calculateSpeed(remainingDistance - (absoluteDistance - SCROLL_ACCELERATION_ZONE));
+        } 
+        // 2. Фаза замедления (последние 25% экрана)
+        else if (absoluteRemaining < SCROLL_ACCELERATION_ZONE) {
+            currentSpeed = calculateSpeed(remainingDistance);
+        } 
+        // 3. Основная фаза (постоянная скорость)
+        else {
+            currentSpeed = MAX_SCROLL_SPEED;
         }
-    } 
+
+        const frameDelta = currentSpeed * deltaTime * direction;
+        
+        // Финализация анимации
+        if (Math.abs(frameDelta) >= absoluteRemaining) {
+            window.scrollTo(0, targetY);
+            isScrolling = false;
+            return;
+        }
+
+        currentPosition += frameDelta;
+        window.scrollTo(0, currentPosition);
+        
+        if (isScrolling) requestAnimationFrame(animate);
+    }
 
     requestAnimationFrame(animate);
-} */
+}
 
-const SCROLL_ACCELERATION_ZONE = 1.0 * window.innerHeight; // 25% высоты экрана
+/* const SCROLL_ACCELERATION_ZONE = 1.0 * window.innerHeight; // 25% высоты экрана
 const MAX_SCROLL_SPEED = 200; // пикселей/сек (увеличено для быстрой середины)
 
-function smoothScrollTo(targetY) {
+ function smoothScrollTo(targetY) {
     if (isScrolling) return;
     
     const startY = window.pageYOffset;
@@ -127,7 +162,7 @@ function smoothScrollTo(targetY) {
 
     requestAnimationFrame(animate);
 }
-
+*/
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', (e) => {
         e.preventDefault();
