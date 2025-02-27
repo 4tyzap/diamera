@@ -45,7 +45,6 @@ let lastScrollTime = 0;
 const SCROLL_ACCELERATION_ZONE = 2.0 * window.innerHeight; // 25% высоты экрана
 const MAX_SCROLL_SPEED = 6000; // пикселей/сек (увеличено для быстрой середины)
 
-/*
 function smoothScrollTo(targetY) {
     if (isScrolling) return;
     
@@ -95,90 +94,6 @@ function smoothScrollTo(targetY) {
         if (isScrolling) {
             requestAnimationFrame(animate);
         }
-    }
-
-    requestAnimationFrame(animate);
-}
-*/
-
-function smoothScrollTo(targetY) {
-    if (isScrolling) return;
-    
-    const startY = window.pageYOffset;
-    const totalDistance = targetY - startY;
-    const direction = Math.sign(totalDistance);
-    let currentPosition = startY;
-    let currentSpeed = 0;
-    let lastFrameTime = performance.now();
-    isScrolling = true;
-
-    // Кэшируем позиции секций
-    const sections = Array.from(document.querySelectorAll('.section'))
-        .map(section => ({
-            element: section,
-            top: section.offsetTop,
-            bottom: section.offsetTop + section.offsetHeight
-        }));
-
-    function getActiveSection(position) {
-        return sections.find(s => position >= s.top && position < s.bottom);
-    }
-
-    function animate() {
-        const now = performance.now();
-        const deltaTime = (now - lastFrameTime) / 1000;
-        lastFrameTime = now;
-
-        const remainingDistance = targetY - currentPosition;
-        const absoluteRemaining = Math.abs(remainingDistance);
-
-        // Фаза ускорения/замедления
-        if (absoluteRemaining <= SCROLL_ACCELERATION_ZONE * 2) {
-            const acceleration = (MAX_SCROLL_SPEED ** 2) / (2 * SCROLL_ACCELERATION_ZONE);
-            currentSpeed = Math.min(
-                Math.sqrt(2 * acceleration * absoluteRemaining),
-                MAX_SCROLL_SPEED
-            );
-        } 
-        // Фаза постоянной скорости
-        else {
-            currentSpeed = MAX_SCROLL_SPEED;
-        }
-
-        const frameDelta = currentSpeed * deltaTime * direction;
-        
-        // Финализация при приближении
-        if (Math.abs(frameDelta) >= absoluteRemaining) {
-            window.scrollTo(0, targetY);
-            isScrolling = false;
-            return;
-        }
-
-        currentPosition += frameDelta;
-        window.scrollTo(0, currentPosition);
-        
-        if (isScrolling) {
-            requestAnimationFrame(animate);
-        }
-
-        // Обновление индикатора в реальном времени
-        const activeSection = getActiveSection(currentPosition);
-        if (activeSection) {
-            const targetItem = document.querySelector(`[data-section="${activeSection.element.id}"]`);
-            if (targetItem) {
-                const prevItem = document.querySelector('.nav-item.active');
-                const progress = Math.abs((currentPosition - activeSection.top) / (activeSection.bottom - activeSection.top));
-                
-                // Плавная интерполяция позиции
-                const startX = prevItem ? prevItem.offsetLeft : 0;
-                const targetX = targetItem.offsetLeft;
-                const currentX = startX + (targetX - startX) * progress;
-                
-                indicator.style.transform = `translateX(${currentX}px)`;
-            }
-        }
-
-        if (isScrolling) requestAnimationFrame(animate);
     }
 
     requestAnimationFrame(animate);
