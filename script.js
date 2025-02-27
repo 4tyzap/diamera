@@ -40,7 +40,7 @@ function updateMenuIndicator(activeItem) {
 }
 
 // Константы для настройки анимации
-const SCROLL_SPEED = 1600; // пикселей/секунду
+/* const SCROLL_SPEED = 1600; // пикселей/секунду
 let isScrolling = false;
 let lastScrollTime = 0;
 
@@ -65,6 +65,63 @@ function smoothScrollTo(targetY) {
             requestAnimationFrame(animate);
         } else {
             isScrolling = false;
+        }
+    } 
+
+    requestAnimationFrame(animate);
+} */
+
+const SCROLL_ACCELERATION_ZONE = 0.25 * window.innerHeight; // 25% высоты экрана
+const MAX_SCROLL_SPEED = 2400; // пикселей/сек (увеличено для быстрой середины)
+
+function smoothScrollTo(targetY) {
+    if (isScrolling) return;
+    
+    const startY = window.pageYOffset;
+    const totalDistance = targetY - startY;
+    const direction = Math.sign(totalDistance);
+    const absoluteDistance = Math.abs(totalDistance);
+    
+    let currentPosition = startY;
+    let currentSpeed = 0;
+    let lastFrameTime = performance.now();
+    isScrolling = true;
+
+    function animate() {
+        const now = performance.now();
+        const deltaTime = (now - lastFrameTime) / 1000;
+        lastFrameTime = now;
+
+        const remainingDistance = targetY - currentPosition;
+        const absoluteRemaining = Math.abs(remainingDistance);
+
+        // Фаза ускорения/замедления
+        if (absoluteRemaining <= SCROLL_ACCELERATION_ZONE * 2) {
+            const acceleration = (MAX_SCROLL_SPEED ** 2) / (2 * SCROLL_ACCELERATION_ZONE);
+            currentSpeed = Math.min(
+                Math.sqrt(2 * acceleration * absoluteRemaining),
+                MAX_SCROLL_SPEED
+            );
+        } 
+        // Фаза постоянной скорости
+        else {
+            currentSpeed = MAX_SCROLL_SPEED;
+        }
+
+        const frameDelta = currentSpeed * deltaTime * direction;
+        
+        // Финализация при приближении
+        if (Math.abs(frameDelta) >= absoluteRemaining) {
+            window.scrollTo(0, targetY);
+            isScrolling = false;
+            return;
+        }
+
+        currentPosition += frameDelta;
+        window.scrollTo(0, currentPosition);
+        
+        if (isScrolling) {
+            requestAnimationFrame(animate);
         }
     }
 
