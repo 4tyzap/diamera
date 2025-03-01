@@ -219,7 +219,65 @@ html {
     --menu-height: calc(var(--menu-item-width) * 0.5); /* 10vw при 100vw */
     --section-offset: calc(var(--menu-height) + 2vw); /* Зависит от высоты меню и ширины окна */
 }
+/* Стили хэдера */
+.sub-header {
+    position: fixed;
+    top: calc(var(--menu-height) + 10px); /* Отступ от основного меню */
+    width: 100%;
+    z-index: 999;
+    background: transparent;
+}
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.contacts {
+    display: flex;
+    gap: 30px;
+}
+
+.contacts a, .contacts span {
+    color: var(--dark-purple);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* Переключатель языков */
+.lang-switcher {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    padding: 8px;
+}
+
+.lang-item {
+    cursor: pointer;
+    padding: 6px 15px;
+    color: var(--dark-purple);
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.lang-indicator {
+    position: absolute;
+    height: 100%;
+    border: 2px solid var(--dark-purple);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    background: rgba(26, 10, 74, 0.05);
+}
+
+.slogan {
+    font-style: italic;
+    color: var(--dark-purple);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    opacity: 0.8;
+}
 /* #home {
     padding-top: var(--section-offset); /* Было 120px */
 }
