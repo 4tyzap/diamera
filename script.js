@@ -158,3 +158,27 @@ function updateMenuSizes() {
 }
 window.addEventListener('resize', updateMenuSizes);
 window.addEventListener('DOMContentLoaded', updateMenuSizes);
+
+// Обработчик переключателя языков
+function updateLangIndicator(activeItem) {
+    const indicator = document.querySelector('.lang-indicator');
+    const itemRect = activeItem.getBoundingClientRect();
+    const containerRect = document.querySelector('.lang-switcher').getBoundingClientRect();
+    
+    indicator.style.width = `${itemRect.width}px`;
+    indicator.style.left = `${itemRect.left - containerRect.left}px`;
+}
+
+document.querySelectorAll('.lang-item').forEach(item => {
+    item.addEventListener('click', () => {
+        document.querySelectorAll('.lang-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        updateLangIndicator(item);
+    });
+});
+
+// Инициализация
+window.addEventListener('DOMContentLoaded', () => {
+    const firstLangItem = document.querySelector('.lang-item[data-lang="ru"]');
+    updateLangIndicator(firstLangItem);
+});
