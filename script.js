@@ -116,9 +116,9 @@ document.querySelectorAll('.nav-item').forEach(item => {
     });
 });
 // Мобильное меню (добавьте логику открытия/закрытия)
-document.querySelector('.menu-icon').addEventListener('click', () => {
-    document.querySelector('.nav-items').classList.toggle('active');
-});
+// document.querySelector('.menu-icon').addEventListener('click', () => {
+//    document.querySelector('.nav-items').classList.toggle('active');
+// });
 
 window.addEventListener('DOMContentLoaded', () => {
     const firstMenuItem = document.querySelector('.nav-item[data-section="home"]');
