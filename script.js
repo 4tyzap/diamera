@@ -140,7 +140,7 @@ function updateMenuSizes() {
 
     // Условие для вертикальной ориентации
     if (window.innerHeight > window.innerWidth) { // Вертикальная ориентация
-        fontSize = Math.floor(menuHeight * 0.4); // 40% от высоты
+        fontSize = Math.floor(menuHeight * 0.35); // 35% от высоты
     }
 
     // Применяем размер шрифта
