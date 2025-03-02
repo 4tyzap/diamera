@@ -240,7 +240,7 @@ html {
     flex-direction: column;
     gap: 0px;
     align-items: flex-start;
-    padding-left: 10px;
+    padding-left: 0;
 }
 
 .lang-item {
