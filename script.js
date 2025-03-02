@@ -132,6 +132,7 @@ function updateMenuSizes() {
     const logoContainer = document.querySelector('.logo-container');
     const indicator = document.querySelector('.nav-indicator');
     const navbar = document.querySelector('.navbar');
+    const subHeader = document.querySelector('.sub-header');
     
     // Рассчитываем размеры
     const itemWidth = window.innerWidth / 5;
@@ -148,6 +149,15 @@ function updateMenuSizes() {
         item.style.fontSize = `${fontSize}px`;
         item.style.width = `${itemWidth}px`;
         item.style.height = `${menuHeight}px`;
+    });
+
+    // Обновляем шрифт subheader
+    const subHeaderElements = subHeader.querySelectorAll('a, span, .slogan');
+    subHeaderElements.forEach(element => {
+        const currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+        if (currentFontSize > fontSize) {
+            element.style.fontSize = `${fontSize}px`;
+        }
     });
 
     // Обновляем остальные элементы
