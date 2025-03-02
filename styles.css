@@ -179,7 +179,7 @@ html {
     height: 100%;
 }
 
-/*.logo-container {
+.logo-container {
     width: var(--menu-item-width);
     height: 100%;
     display: flex;
@@ -187,7 +187,7 @@ html {
     justify-content: center;
     padding: 0;
     position: relative; /* Для позиционирования индикатора */
-} */
+}
 
 .logo-img {
     max-width: 90%;
