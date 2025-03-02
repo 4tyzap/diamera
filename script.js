@@ -182,22 +182,45 @@ window.addEventListener('DOMContentLoaded', updateMenuSizes);
 // Обработчик переключателя языков
 /* function updateLangIndicator(activeItem) {
     const indicator = document.querySelector('.lang-indicator');
-    const itemRect = activeItem.getBoundingClientRect();
-    const containerRect = document.querySelector('.lang-switcher').getBoundingClientRect();
-    
-    indicator.style.width = `${itemRect.width}px`;
-    indicator.style.top = `${itemRect.top - containerRect.top}px`;
-} */
-function updateLangIndicator(activeItem) {
-    const indicator = document.querySelector('.lang-indicator');
     const itemIndex = Array.from(document.querySelectorAll('.lang-item')).indexOf(activeItem);
     indicator.style.top = `${itemIndex * 50}%`;
+} */
+
+function updateLangIndicator(activeItem) {
+    const indicator = document.querySelector('.lang-indicator');
+    const langSwitcher = document.querySelector('.lang-switcher');
+    const itemHeight = langSwitcher.offsetHeight / 2;
+    
+    indicator.style.top = `${activeItem.offsetTop}px`;
+    indicator.style.height = `${itemHeight}px`;
 }
+
+/* document.querySelectorAll('.lang-item').forEach(item => {
+    item.addEventListener('click', () => {
+        // Удаляем активность у всех элементов
+        document.querySelectorAll('.lang-item').forEach(i => i.classList.remove('active'));
+        // Добавляем активность текущему
+        item.classList.add('active');
+        // Обновляем индикатор
+        updateLangIndicator(item);
+    });
+});
 
 document.querySelectorAll('.lang-item').forEach(item => {
     item.addEventListener('click', () => {
         document.querySelectorAll('.lang-item').forEach(i => i.classList.remove('active'));
         item.classList.add('active');
+        updateLangIndicator(item);
+    });
+}); */
+
+document.querySelectorAll('.lang-item').forEach(item => {
+    item.addEventListener('click', () => {
+        // Удаляем активность у всех элементов
+        document.querySelectorAll('.lang-item').forEach(i => i.classList.remove('active'));
+        // Добавляем активность текущему
+        item.classList.add('active');
+        // Обновляем индикатор
         updateLangIndicator(item);
     });
 });
