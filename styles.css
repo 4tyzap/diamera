@@ -27,9 +27,9 @@ body {
     padding: 0;/*20px;*/
 }
 
-.nav-item {
+/* .nav-item {
     cursor: pointer;
-    padding: 0; /*15px 30px;*/
+    padding: 0; 
     color: var(--dark-purple);
     transition: 0.3s;
     position: relative;
@@ -37,13 +37,12 @@ body {
     flex: 1;
     text-align: center;
     border: 2px solid transparent;
-    /* Добавить для вертикального выравнивания: */
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60px; /* Фиксированная высота пункта */
+    height: 60px;
 }
-
+*/
 .section {
     min-height: 100vh;
     padding: calc(var(--section-offset)) 40px 40px; /* Для первой секции */
@@ -180,7 +179,7 @@ html {
     height: 100%;
 }
 
-.logo-container {
+/*.logo-container {
     width: var(--menu-item-width);
     height: 100%;
     display: flex;
@@ -188,7 +187,7 @@ html {
     justify-content: center;
     padding: 0;
     position: relative; /* Для позиционирования индикатора */
-}
+} */
 
 .logo-img {
     max-width: 90%;
@@ -270,7 +269,7 @@ html {
     transition: font-size 0.3s ease;
 }
 
-.lang-indicator {
+/* .lang-indicator {
     position: absolute;
     width: 100%;
     height: 2px;
@@ -278,7 +277,7 @@ html {
     transition: all 0.3s ease;
     bottom: -5px;
     left: 0;
-}
+} */
 .slogan {
     font-style: italic;
     color: var(--dark-purple);
@@ -296,6 +295,42 @@ html {
     transition: font-size 0.3s ease; /* Плавное изменение */
 }
 
+/* Новые размеры */
+:root {
+    --lang-width: 7.5vw;
+    --menu-item-width: 18.5vw; /* Было 20% */
+}
+
+.lang-container {
+    width: var(--lang-width);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    width: var(--menu-item-width); /* Теперь 18.5% */
+}
+
+.nav-item {
+    width: var(--menu-item-width); /* 18.5% вместо 20% */
+}
+
+/* Вертикальный селектор языка */
+.lang-switcher {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+
+.lang-indicator {
+    width: 100%;
+    height: 2px;
+    background: var(--dark-purple);
+    transition: all 0.3s ease;
+}
 /* #home {
     padding-top: var(--section-offset); /* Было 120px */
 }
