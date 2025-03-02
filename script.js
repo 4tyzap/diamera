@@ -25,7 +25,7 @@ window.addEventListener('scroll', () => {
 
     // Параллакс-эффект
     if (parallaxBg) {
-        parallaxBg.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+        parallaxBg.style.transform = `translate(-50%, ${window.scrollY * 0.5}px)`;
     }
 });
 
