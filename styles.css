@@ -486,3 +486,45 @@ html {
         font-size: 1em;
     }
 }
+
+/* Сдвиг контента вниз */
+#home .content-block {
+    padding-top: 350px; /* Добавляем к базовому отступу */
+}
+
+/* Стилизация списка */
+.hero-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hero-list li {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    color: var(--dark-purple);
+}
+
+.hero-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--dark-purple);
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    #home .content-block {
+        padding-top: 200px; /* Уменьшаем отступ для мобильных */
+    }
+    
+    .hero-list li {
+        font-size: 1em;
+        padding-left: 25px;
+    }
+}
