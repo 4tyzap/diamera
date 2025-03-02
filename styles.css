@@ -222,7 +222,7 @@ html {
 /* Стили хэдера */
 .sub-header {
     position: fixed;
-    top: calc(var(--menu-height)+15px); /* Отступ от основного меню */
+    top: calc(var(--menu-height)+30px); /* Отступ от основного меню */
     width: 100%;
     z-index: 999;
     background: transparent;
