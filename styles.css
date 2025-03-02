@@ -47,7 +47,7 @@ body {
     z-index: -1;
     filter: brightness(0.8);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 0); /* Учитывает будущие изменения Y */
     margin: 0;
     top: var(--menu-height); /* Выравнивание под меню */
 }
