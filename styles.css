@@ -53,15 +53,17 @@ body {
 }
 
 @media (max-width: 768px) {
-    #home.section {
-        overflow: hidden; /* Обрезаем всё за пределами секции */
+    .parallax-bg {
+        background-image: url('main-mobile.png');
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        left: 0;
+        transform: none !important;
     }
 
-    .parallax-bg {
-        width: 65vw; /* 65% ширины окна */
-        height: 100%;
-        left: 50%;
-        transform: translate(-50%, 0) !important; /* Центрирование */
+    #home.section {
+        overflow: visible;
     }
 }
 
