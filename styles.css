@@ -216,6 +216,54 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
+    gap: 20px;
+}
+
+.contacts {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+}
+
+.slogan {
+    flex-shrink: 0;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .desktop-contact {
+        display: none !important;
+    }
+    
+    .mobile-contact {
+        display: inline-block !important;
+        font-size: 1.5em;
+    }
+    
+    .contacts {
+        gap: 15px;
+        justify-content: flex-start;
+    }
+    
+    .slogan {
+        text-align: right;
+        flex: 1;
+    }
+}
+
+/* Десктопная версия */
+@media (min-width: 769px) {
+    .mobile-contact {
+        display: none !important;
+    }
+    
+    .contacts {
+        justify-content: space-between;
+    }
+    
+    .contacts > :nth-child(2) {
+        margin: 0 auto;
+    }
 }
 
 .contacts {
