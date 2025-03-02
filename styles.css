@@ -390,3 +390,82 @@ html {
     transform: translateX(-50%);
     padding: 0 0;
 }
+
+/* Блок с цифрами */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--dark-purple);
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: var(--black);
+    margin-top: 10px;
+}
+
+/* USP блок */
+.usp-box {
+    margin-top: 50px;
+    padding: 30px;
+    background: var(--pastel-purple);
+    border-radius: 12px;
+}
+
+.usp-list {
+    list-style: none;
+    padding: 0;
+}
+
+.usp-list li {
+    margin: 15px 0;
+    padding-left: 40px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.usp-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--dark-purple);
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.lead {
+    font-size: 1.4em;
+    color: var(--black);
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .usp-list li {
+        padding-left: 30px;
+    }
+
+    .usp-list li::before {
+        font-size: 1em;
+    }
+}
