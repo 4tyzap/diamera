@@ -278,6 +278,11 @@ html {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     opacity: 0.8;
 }
+
+.sub-header a, .sub-header span, .sub-header .slogan {
+    font-size: 1em; /* Начальный размер шрифта */
+    transition: font-size 0.3s ease; /* Плавное изменение */
+}
 /* #home {
     padding-top: var(--section-offset); /* Было 120px */
 }
