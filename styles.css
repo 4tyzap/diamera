@@ -216,7 +216,7 @@ html {
 
 :root {
     --menu-item-width: calc(100vw / 5);
-    --menu-height: calc(var(--menu-item-width) * 0.5); /* 10vw при 100vw */
+    --menu-height: min(calc(var(--menu-item-width) * 0.5), 100px); /* 10vw при 100vw */
     --section-offset: calc(var(--menu-height) + 2vw); /* Зависит от высоты меню и ширины окна */
 }
 /* Стили хэдера */
