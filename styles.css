@@ -52,11 +52,24 @@ body {
     top: var(--menu-height); /* Выравнивание под меню */
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .parallax-bg {
         width: 150vw; /* Симметричная обрезка */
         left: 50%;
         transform: translateX(-50%);
+    }
+} */
+
+@media (max-width: 768px) {
+    #home.section {
+        overflow: hidden; /* Обрезаем всё за пределами секции */
+    }
+
+    .parallax-bg {
+        width: 65vw; /* 65% ширины окна */
+        height: 100%;
+        left: 50%;
+        transform: translate(-50%, 0) !important; /* Центрирование */
     }
 }
 
