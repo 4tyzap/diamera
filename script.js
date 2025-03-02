@@ -186,7 +186,7 @@ function updateLangIndicator(activeItem) {
     const containerRect = document.querySelector('.lang-switcher').getBoundingClientRect();
     
     indicator.style.width = `${itemRect.width}px`;
-    indicator.style.left = `${itemRect.left - containerRect.left}px`;
+    indicator.style.top = `${itemRect.top - containerRect.top}px`;
 }
 
 document.querySelectorAll('.lang-item').forEach(item => {
