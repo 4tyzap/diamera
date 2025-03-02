@@ -283,6 +283,12 @@ html {
     font-size: 1em; /* Начальный размер шрифта */
     transition: font-size 0.3s ease; /* Плавное изменение */
 }
+
+.lang-item {
+    font-size: 1em; /* Начальный размер шрифта */
+    transition: font-size 0.3s ease; /* Плавное изменение */
+}
+
 /* #home {
     padding-top: var(--section-offset); /* Было 120px */
 }
