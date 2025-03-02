@@ -135,12 +135,12 @@ function updateMenuSizes() {
     
     // Рассчитываем размеры
     const itemWidth = window.innerWidth / 5;
-    const menuHeight = itemWidth * 0.5;
+    const menuHeight = Math.min(itemWidth * 0.5, 100); // Ограничение 100px
     let fontSize = Math.floor(menuHeight * 0.2); // 20% от высоты по умолчанию
 
     // Условие для вертикальной ориентации
     if (window.innerHeight > window.innerWidth) { // Вертикальная ориентация
-        fontSize = Math.floor(menuHeight * 0.35); // 35% от высоты
+        fontSize = Math.floor(menuHeight * 0.25); // 25% от высоты
     }
 
     // Применяем размер шрифта
