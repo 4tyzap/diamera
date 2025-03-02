@@ -43,7 +43,7 @@ body {
     position: absolute;
     width: 100vw; /* Ширина по окну браузера */
     height: 100%; /* Высота секции */
-    background: url('main.jpg') center/cover;
+    background: url('main.png') center/cover;
     z-index: -1;
     filter: brightness(0.8);
     left: 50%;
