@@ -317,7 +317,7 @@ html {
     width: var(--menu-item-width); /* 18.5% вместо 20% */
 }
 
-/* Вертикальный селектор языка */
+/* Вертикальный селектор языка 
 .lang-switcher {
     display: flex;
     flex-direction: column;
@@ -330,6 +330,30 @@ html {
     height: 2px;
     background: var(--dark-purple);
     transition: all 0.3s ease;
+}
+*/
+.lang-switcher {
+    height: 100%;
+    position: relative;
+}
+
+.lang-item {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-size: calc(var(--menu-height) * 0.3); /* 30% от высоты меню */
+    line-height: 1;
+    border: none !important;
+}
+
+.lang-indicator {
+    height: 2px;
+    width: 100%;
+    background: var(--dark-purple);
+    transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* #home {
     padding-top: var(--section-offset); /* Было 120px */
