@@ -180,13 +180,18 @@ window.addEventListener('resize', updateMenuSizes);
 window.addEventListener('DOMContentLoaded', updateMenuSizes);
 
 // Обработчик переключателя языков
-function updateLangIndicator(activeItem) {
+/* function updateLangIndicator(activeItem) {
     const indicator = document.querySelector('.lang-indicator');
     const itemRect = activeItem.getBoundingClientRect();
     const containerRect = document.querySelector('.lang-switcher').getBoundingClientRect();
     
     indicator.style.width = `${itemRect.width}px`;
     indicator.style.top = `${itemRect.top - containerRect.top}px`;
+} */
+function updateLangIndicator(activeItem) {
+    const indicator = document.querySelector('.lang-indicator');
+    const itemIndex = Array.from(document.querySelectorAll('.lang-item')).indexOf(activeItem);
+    indicator.style.top = `${itemIndex * 50}%`;
 }
 
 document.querySelectorAll('.lang-item').forEach(item => {
