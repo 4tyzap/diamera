@@ -24,9 +24,9 @@ window.addEventListener('scroll', () => {
     });
 
     // Параллакс-эффект
-    if (parallaxBg) {
-        parallaxBg.style.transform = `translate(-50%, ${window.scrollY * 0.5}px)`;
-    }
+if (parallaxBg && window.innerWidth > 768) { // Только для десктопа
+    parallaxBg.style.transform = `translate(-50%, ${window.scrollY * 0.5}px)`;
+}
 });
 
 // Плавный скролл
