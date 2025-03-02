@@ -327,7 +327,7 @@ html {
 .lang-indicator {
     position: absolute;
     width: 100%;
-    background: var(--dark-purple);
+    background: rgba(26, 10, 74, 0.1); /* 1A0A4A с прозрачностью 10% */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     left: 0;
 }
