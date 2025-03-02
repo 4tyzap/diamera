@@ -133,6 +133,7 @@ function updateMenuSizes() {
     const indicator = document.querySelector('.nav-indicator');
     const navbar = document.querySelector('.navbar');
     const subHeader = document.querySelector('.sub-header');
+    const langItems = document.querySelectorAll('.lang-item');
     
     // Рассчитываем размеры
     const itemWidth = window.innerWidth / 5;
@@ -160,12 +161,21 @@ function updateMenuSizes() {
         }
     });
 
+    // Обновляем шрифт селектора языка
+    langItems.forEach(item => {
+        const currentFontSize = parseFloat(window.getComputedStyle(item).fontSize);
+        if (currentFontSize > fontSize) {
+            item.style.fontSize = `${fontSize}px`;
+        }
+    });
+
     // Обновляем остальные элементы
     navbar.style.height = `${menuHeight}px`;
     logoContainer.style.width = `${itemWidth}px`;
     indicator.style.width = `${itemWidth}px`;
     indicator.style.height = `${menuHeight}px`;
 }
+
 window.addEventListener('resize', updateMenuSizes);
 window.addEventListener('DOMContentLoaded', updateMenuSizes);
 
