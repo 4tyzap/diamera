@@ -41,12 +41,23 @@ body {
 
 .parallax-bg {
     position: absolute;
-    width: 110%;
-    height: 110%;
-    background: url('main.png') center/cover;
-    transform: translateZ(-1px) scale(1.1);
+    width: 100vw; /* Ширина по окну браузера */
+    height: 100%; /* Высота секции */
+    background: url('main.jpg') center/cover;
     z-index: -1;
     filter: brightness(0.8);
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    top: var(--menu-height); /* Выравнивание под меню */
+}
+
+@media (max-width: 768px) {
+    .parallax-bg {
+        width: 150vw; /* Симметричная обрезка */
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 .parallax-bg {
