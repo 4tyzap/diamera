@@ -572,3 +572,38 @@ html {
         padding-left: 25px;
     }
 }
+
+/* Логотип в главной секции */
+.main-logo-container {
+    position: absolute;
+    top: calc(var(--menu-height) + 20px); /* Отступ от меню */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+}
+
+.main-logo {
+    max-width: 40%;
+    height: auto;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .main-logo {
+        max-width: 30%; /* 30% ширины экрана на мобильных */
+        padding: 0 10px;
+    }
+    
+    #home .content-block {
+        padding-top: 250px; /* Увеличиваем отступ для логотипа */
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-logo {
+        max-width: 500px; /* Фиксированный размер на широких экранах */
+    }
+}
