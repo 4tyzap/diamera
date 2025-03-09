@@ -576,7 +576,7 @@ html {
 /* Логотип в главной секции */
 .main-logo-container {
     position: absolute;
-    top: calc(var(--menu-height) + 40px);
+    top: calc(var(--menu-height) + 80px);
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
